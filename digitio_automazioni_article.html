@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap');
+
+  :root {
+    --bg: #0A0A0A;
+    --surface: #111111;
+    --border: rgba(255,255,255,0.07);
+    --accent: #5E6AD2;
+    --accent-dim: rgba(94,106,210,0.12);
+    --text: #F0EEE9;
+    --muted: #9CA3AF;
+    --faint: #6B7280;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 16px;
+    line-height: 1.7;
+  }
+
+  /* NAV */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+    background: rgba(10,10,10,0.85);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-brand {
+    font-family: 'Lora', serif;
+    font-size: 1.1rem;
+    color: var(--text);
+    text-decoration: none;
+    letter-spacing: 0.02em;
+  }
+  .nav-label {
+    font-size: 0.75rem;
+    color: var(--faint);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  /* PROGRESS BAR */
+  #progress {
+    position: fixed;
+    top: 0; left: 0;
+    height: 2px;
+    width: 0%;
+    background: var(--accent);
+    z-index: 200;
+    transition: width 0.1s linear;
+  }
+
+  /* ARTICLE LAYOUT */
+  .article-wrapper {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 4rem 2rem 6rem;
+  }
+
+  /* HEADER */
+  .article-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 2rem;
+  }
+  .tag {
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    background: var(--accent-dim);
+    padding: 0.3rem 0.75rem;
+    border-radius: 20px;
+    border: 1px solid rgba(94,106,210,0.25);
+  }
+  .meta-sep { color: var(--border); }
+  .meta-date { font-size: 0.82rem; color: var(--faint); }
+
+  h1.article-title {
+    font-family: 'Lora', serif;
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 600;
+    line-height: 1.2;
+    color: var(--text);
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.01em;
+  }
+
+  .article-lead {
+    font-size: 1.15rem;
+    color: var(--muted);
+    line-height: 1.75;
+    margin-bottom: 2.5rem;
+    font-weight: 300;
+    border-left: 2px solid var(--accent);
+    padding-left: 1.25rem;
+  }
+
+  .divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 2.5rem 0;
+  }
+
+  /* BODY TEXT */
+  .article-body h2 {
+    font-family: 'Lora', serif;
+    font-size: 1.55rem;
+    font-weight: 600;
+    color: var(--text);
+    margin: 3rem 0 1rem;
+    letter-spacing: -0.01em;
+  }
+
+  .article-body h3 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1.05rem;
+    font-weight: 500;
+    color: var(--text);
+    margin: 2rem 0 0.6rem;
+    letter-spacing: 0.01em;
+  }
+
+  .article-body p {
+    color: #C4C0B8;
+    font-size: 1rem;
+    line-height: 1.85;
+    margin-bottom: 1.25rem;
+    font-weight: 300;
+  }
+
+  .article-body strong {
+    color: var(--text);
+    font-weight: 500;
+  }
+
+  /* CALLOUT BOX */
+  .callout {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent);
+    border-radius: 6px;
+    padding: 1.25rem 1.5rem;
+    margin: 2rem 0;
+  }
+  .callout p {
+    margin: 0;
+    font-size: 0.95rem;
+    color: var(--muted);
+    font-style: italic;
+  }
+
+  /* EXAMPLE CARDS */
+  .examples-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin: 2rem 0;
+  }
+  @media(max-width: 560px) {
+    .examples-grid { grid-template-columns: 1fr; }
+  }
+  .ex-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.25rem 1.25rem 1rem;
+    transition: border-color 0.2s;
+  }
+  .ex-card:hover { border-color: rgba(94,106,210,0.4); }
+  .ex-icon {
+    font-size: 1.4rem;
+    margin-bottom: 0.6rem;
+    display: block;
+  }
+  .ex-card h4 {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text);
+    margin-bottom: 0.4rem;
+  }
+  .ex-card p {
+    font-size: 0.83rem;
+    color: var(--faint);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  /* CHECKLIST */
+  .checklist {
+    list-style: none;
+    margin: 1.5rem 0 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+  .checklist li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    font-size: 0.95rem;
+    color: #C4C0B8;
+  }
+  .checklist li::before {
+    content: '→';
+    color: var(--accent);
+    flex-shrink: 0;
+    font-size: 0.9rem;
+    margin-top: 2px;
+  }
+
+  /* NUMERO PULLOUT */
+  .stat-row {
+    display: flex;
+    gap: 1.5rem;
+    margin: 2rem 0;
+    flex-wrap: wrap;
+  }
+  .stat-box {
+    background: var(--accent-dim);
+    border: 1px solid rgba(94,106,210,0.2);
+    border-radius: 8px;
+    padding: 1rem 1.5rem;
+    text-align: center;
+    flex: 1;
+    min-width: 130px;
+  }
+  .stat-box .num {
+    font-family: 'Lora', serif;
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--accent);
+    display: block;
+  }
+  .stat-box span:last-child {
+    font-size: 0.78rem;
+    color: var(--faint);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  /* CTA FINALE */
+  .article-cta {
+    margin-top: 4rem;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 2rem 2rem;
+    text-align: center;
+  }
+  .article-cta h3 {
+    font-family: 'Lora', serif;
+    font-size: 1.4rem;
+    margin-bottom: 0.6rem;
+  }
+  .article-cta p {
+    font-size: 0.92rem;
+    color: var(--faint);
+    margin-bottom: 1.5rem;
+  }
+  .btn {
+    display: inline-block;
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 0.7rem 1.5rem;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+  .btn:hover { background: #4f5bbf; }
+
+  /* FOOTER */
+  footer {
+    text-align: center;
+    padding: 2rem;
+    border-top: 1px solid var(--border);
+    font-size: 0.8rem;
+    color: var(--faint);
+  }
+
+  /* FADE IN */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .fade-in.visible {
+    opacity: 1;
+    transform: none;
+  }
+</style>
+</head>
+<body>
+
+<div id="progress"></div>
+
+<nav>
+  <a href="#" class="nav-brand">Digitio</a>
+  <span class="nav-label">Risorse</span>
+</nav>
+
+<main class="article-wrapper">
+
+  <div class="article-meta fade-in">
+    <span class="tag">Automazioni</span>
+    <span class="meta-sep">·</span>
+    <span class="meta-date">Aprile 2025 · 6 min di lettura</span>
+  </div>
+
+  <h1 class="article-title fade-in">Automatizzare significa lavorare meno.<br><em>Non fare meno.</em></h1>
+
+  <p class="article-lead fade-in">
+    Ogni giorno nelle piccole imprese si perdono ore in operazioni ripetitive: rispondere alle stesse email, aggiornare fogli Excel, inviare preventivi, ricordare appuntamenti. Le automazioni digitali eliminano questi compiti — e restituiscono tempo per ciò che conta davvero.
+  </p>
+
+  <hr class="divider fade-in"/>
+
+  <div class="article-body">
+
+    <h2 class="fade-in">Cos'è un'automazione, concretamente?</h2>
+    <p class="fade-in">Un'automazione è una <strong>sequenza di azioni che si esegue da sola</strong>, attivata da un evento preciso. Pensa a una sveglia: non devi ricordarti di svegliarti — lo fa il sistema per te, ogni volta, senza errori.</p>
+    <p class="fade-in">In ambito digitale funziona allo stesso modo. Un cliente compila un modulo sul tuo sito → riceve automaticamente un'email di conferma → il suo contatto entra nel tuo CRM → tu ricevi una notifica su WhatsApp. <strong>Nessun clic manuale. Nessuna dimenticanza.</strong></p>
+
+    <div class="callout fade-in">
+      <p>Le automazioni non sono roba da grandi aziende con team IT. Oggi esistono strumenti accessibili che chiunque può configurare in pochi giorni — anche senza scrivere una riga di codice.</p>
+    </div>
+
+    <h2 class="fade-in">Dove si perde davvero il tempo</h2>
+    <p class="fade-in">Prima di capire come automatizzare, è utile capire <em>cosa</em> automatizzare. Le operazioni più comuni in cui le PMI e i liberi professionisti perdono ore ogni settimana:</p>
+
+    <ul class="checklist fade-in">
+      <li>Rispondere manualmente a richieste di informazioni sempre uguali</li>
+      <li>Inviare promemoria per appuntamenti o scadenze</li>
+      <li>Copiare dati da un foglio Excel a un altro strumento</li>
+      <li>Generare e inviare preventivi o fatture ricorrenti</li>
+      <li>Raccogliere e organizzare feedback o recensioni dei clienti</li>
+      <li>Aggiornare lo stato degli ordini o dei progetti</li>
+    </ul>
+
+    <p class="fade-in">Ognuna di queste attività, presa singolarmente, sembra piccola. Ma sommate, possono occupare <strong>da 5 a 15 ore a settimana</strong> — ore sottratte alla crescita reale del business.</p>
+
+    <div class="stat-row fade-in">
+      <div class="stat-box">
+        <span class="num">67%</span>
+        <span>delle PMI<br>usa ancora Excel<br>per la gestione clienti</span>
+      </div>
+      <div class="stat-box">
+        <span class="num">8h</span>
+        <span>medie perse a settimana<br>in attività<br>automatizzabili</span>
+      </div>
+      <div class="stat-box">
+        <span class="num">3×</span>
+        <span>più veloce<br>la risposta ai clienti<br>con un CRM automatico</span>
+      </div>
+    </div>
+
+    <h2 class="fade-in">Esempi reali per ogni tipo di attività</h2>
+    <p class="fade-in">Le automazioni si adattano a qualsiasi settore. Ecco alcuni scenari concreti, per capire subito dove potrebbero fare la differenza nella tua realtà.</p>
+
+    <div class="examples-grid fade-in">
+      <div class="ex-card">
+        <span class="ex-icon">✂️</span>
+        <h4>Salone / Studio estetico</h4>
+        <p>Il cliente prenota online e riceve un promemoria SMS 24h prima. In caso di disdetta, il calendario si aggiorna da solo.</p>
+      </div>
+      <div class="ex-card">
+        <span class="ex-icon">⚖️</span>
+        <h4>Studio professionale</h4>
+        <p>Una richiesta via email genera automaticamente una scheda cliente, assegna la pratica e invia un'email di presa in carico.</p>
+      </div>
+      <div class="ex-card">
+        <span class="ex-icon">🍽️</span>
+        <h4>Ristorante / Bar</h4>
+        <p>Dopo ogni prenotazione parte un messaggio di conferma. A fine serata, un modulo automatico raccoglie le recensioni dei tavoli.</p>
+      </div>
+      <div class="ex-card">
+        <span class="ex-icon">🏗️</span>
+        <h4>Artigiano / Impiantista</h4>
+        <p>Il preventivo firmato via email attiva automaticamente la fattura proforma e inserisce il lavoro nel calendario con materiali necessari.</p>
+      </div>
+      <div class="ex-card">
+        <span class="ex-icon">🛒</span>
+        <h4>E-commerce locale</h4>
+        <p>Ogni ordine scatena una catena: conferma al cliente, aggiornamento del magazzino, notifica al corriere, email di follow-up post-spedizione.</p>
+      </div>
+      <div class="ex-card">
+        <span class="ex-icon">🎓</span>
+        <h4>Formatore / Coach</h4>
+        <p>Chi si iscrive a un corso riceve la sequenza di email di benvenuto, il materiale pre-corso e i reminder delle sessioni live — tutto automatico.</p>
+      </div>
+    </div>
+
+    <h2 class="fade-in">Da dove si comincia?</h2>
+    <p class="fade-in">Il punto di partenza non è la tecnologia — è il processo. Prima di scegliere uno strumento, bisogna capire <strong>quali attività si ripetono di più</strong> e dove si verificano i colli di bottiglia.</p>
+
+    <h3 class="fade-in">1. Mappa le tue attività ripetitive</h3>
+    <p class="fade-in">Per una settimana, annota ogni volta che fai qualcosa che hai già fatto esattamente nello stesso modo. Quella lista è la tua mappa delle opportunità.</p>
+
+    <h3 class="fade-in">2. Scegli un punto d'ingresso semplice</h3>
+    <p class="fade-in">Non serve automatizzare tutto in una volta. Un buon primo passo: <strong>la gestione delle richieste in arrivo</strong>. Un modulo sul sito collegato a un foglio Google o a un CRM base è già un'automazione concreta, realizzabile in mezza giornata.</p>
+
+    <h3 class="fade-in">3. Misura il tempo risparmiato</h3>
+    <p class="fade-in">Dopo aver attivato un'automazione, conta le ore recuperate nei successivi 30 giorni. Quel numero ti dirà dove investire il prossimo passo.</p>
+
+    <div class="callout fade-in">
+      <p>"Non ho tempo di impostare le automazioni" è il paradosso più comune. È esattamente perché non hai tempo che dovresti farlo — perché dopo le avrai.</p>
+    </div>
+
+    <h2 class="fade-in">Quanto costa?</h2>
+    <p class="fade-in">Questo è il punto che spesso blocca le piccole attività: la percezione che le automazioni siano costose. In realtà il mercato oggi offre strumenti con piani gratuiti o a pochi euro al mese — <strong>Zapier, Make, n8n, Notion, Tally, Brevo</strong> sono solo alcuni esempi accessibili anche con budget ridotti.</p>
+    <p class="fade-in">Il costo reale non è lo strumento: è il tempo per configurarlo correttamente. È qui che lavorare con chi ha già esperienza fa la differenza — si evitano settimane di tentativi e si arriva subito al risultato.</p>
+
+    <h2 class="fade-in">Il vantaggio competitivo che in pochi sfruttano</h2>
+    <p class="fade-in">La maggior parte delle piccole imprese in Italia non usa ancora automazioni strutturate. Questo significa che chi inizia oggi ha un <strong>vantaggio reale</strong>: risponde più velocemente, sbaglia meno, scala più facilmente.</p>
+    <p class="fade-in">L'obiettivo non è diventare un'azienda tecnologica. È liberare il tuo tempo dalle cose che il computer può fare meglio di te — per concentrarti sulle cose che solo tu sai fare.</p>
+
+  </div>
+
+  <div class="article-cta fade-in">
+    <h3>Vuoi capire cosa si può automatizzare nella tua attività?</h3>
+    <p>Raccontaci come lavori. Facciamo un'analisi gratuita e ti diciamo esattamente dove le automazioni ti farebbero guadagnare tempo.</p>
+    <a href="/#contact" class="btn">Richiedi un'analisi gratuita →</a>
+  </div>
+
+</main>
+
+<footer>
+  © 2025 Digitio · Tutti i diritti riservati
+</footer>
+
+<script>
+  // Progress bar
+  window.addEventListener('scroll', () => {
+    const doc = document.documentElement;
+    const scrolled = doc.scrollTop / (doc.scrollHeight - doc.clientHeight);
+    document.getElementById('progress').style.width = (scrolled * 100) + '%';
+  });
+
+  // Fade in on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
