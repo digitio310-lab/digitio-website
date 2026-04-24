@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Automatizzare significa lavorare meno. Non fare meno. — Digitio</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap');
 
@@ -48,24 +47,11 @@
     text-decoration: none;
     letter-spacing: 0.02em;
   }
-  .nav-back {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4rem;
-    font-size: 0.82rem;
+  .nav-label {
+    font-size: 0.75rem;
     color: var(--faint);
-    text-decoration: none;
-    letter-spacing: 0.02em;
-    transition: color 0.2s ease;
-  }
-  .nav-back:hover {
-    color: var(--muted);
-  }
-  .nav-back svg {
-    transition: transform 0.2s ease;
-  }
-  .nav-back:hover svg {
-    transform: translateX(-3px);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
   }
 
   /* PROGRESS BAR */
@@ -271,22 +257,6 @@
     text-transform: uppercase;
   }
 
-  /* WARNING BOX */
-  .warning-box {
-    background: rgba(210, 130, 94, 0.08);
-    border: 1px solid rgba(210, 130, 94, 0.2);
-    border-left: 3px solid #D2825E;
-    border-radius: 6px;
-    padding: 1.25rem 1.5rem;
-    margin: 2rem 0;
-  }
-  .warning-box p {
-    margin: 0;
-    font-size: 0.95rem;
-    color: var(--muted);
-    font-style: italic;
-  }
-
   /* CTA FINALE */
   .article-cta {
     margin-top: 4rem;
@@ -347,13 +317,8 @@
 <div id="progress"></div>
 
 <nav>
-  <a href="index.html" class="nav-brand">Digitio</a>
-  <a href="index.html#resources" class="nav-back">
-    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M11.5 7H2.5M2.5 7L6 3.5M2.5 7L6 10.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
-    </svg>
-    Tutte le risorse
-  </a>
+  <a href="#" class="nav-brand">Digitio</a>
+  <span class="nav-label">Risorse</span>
 </nav>
 
 <main class="article-wrapper">
@@ -361,13 +326,13 @@
   <div class="article-meta fade-in">
     <span class="tag">Automazioni</span>
     <span class="meta-sep">·</span>
-    <span class="meta-date">Aprile 2026 · 6 min di lettura</span>
+    <span class="meta-date">Aprile 2025 · 6 min di lettura</span>
   </div>
 
   <h1 class="article-title fade-in">Automatizzare significa lavorare meno.<br><em>Non fare meno.</em></h1>
 
   <p class="article-lead fade-in">
-    Ogni giorno nelle piccole imprese si perdono ore in operazioni ripetitive: rispondere alle stesse email, aggiornare fogli Excel, inseguire pagamenti. Le automazioni digitali eliminano questi compiti — e restituiscono tempo per ciò che conta davvero.
+    Ogni giorno nelle piccole imprese si perdono ore in operazioni ripetitive: rispondere alle stesse email, aggiornare fogli Excel, inviare preventivi, ricordare appuntamenti. Le automazioni digitali eliminano questi compiti — e restituiscono tempo per ciò che conta davvero.
   </p>
 
   <hr class="divider fade-in"/>
@@ -375,116 +340,114 @@
   <div class="article-body">
 
     <h2 class="fade-in">Cos'è un'automazione, concretamente?</h2>
-    <p class="fade-in">Un'automazione è una <strong>sequenza di azioni che si esegue da sola</strong>, attivata da un evento preciso. In ambito digitale funziona come un ponte invisibile tra i tuoi strumenti: un cliente compila un modulo → il contatto entra nel CRM → riceve un preventivo istantaneo → tu ricevi una notifica. <strong>Senza un singolo clic manuale.</strong></p>
+    <p class="fade-in">Un'automazione è una <strong>sequenza di azioni che si esegue da sola</strong>, attivata da un evento preciso. Pensa a una sveglia: non devi ricordarti di svegliarti — lo fa il sistema per te, ogni volta, senza errori.</p>
+    <p class="fade-in">In ambito digitale funziona allo stesso modo. Un cliente compila un modulo sul tuo sito → riceve automaticamente un'email di conferma → il suo contatto entra nel tuo CRM → tu ricevi una notifica su WhatsApp. <strong>Nessun clic manuale. Nessuna dimenticanza.</strong></p>
 
     <div class="callout fade-in">
-      <p>L'automazione non è un lusso per le grandi aziende. Oggi, il 60% delle professioni ha almeno il 30% di attività che potrebbero essere delegate a un software oggi stesso. Non farlo significa pagare una tassa invisibile sulla tua produttività.</p>
+      <p>Le automazioni non sono roba da grandi aziende con team IT. Oggi esistono strumenti accessibili che chiunque può configurare in pochi giorni — anche senza scrivere una riga di codice.</p>
     </div>
 
     <h2 class="fade-in">Dove si perde davvero il tempo</h2>
-    <p class="fade-in">Prima di automatizzare, bisogna mappare le "falle" del sistema. Le operazioni più comuni in cui professionisti e PMI perdono ore ogni settimana includono:</p>
+    <p class="fade-in">Prima di capire come automatizzare, è utile capire <em>cosa</em> automatizzare. Le operazioni più comuni in cui le PMI e i liberi professionisti perdono ore ogni settimana:</p>
 
     <ul class="checklist fade-in">
-      <li>Inserimento manuale di dati (con un tasso di errore umano fino al 3%)</li>
-      <li>Inviare promemoria per appuntamenti o pagamenti scaduti</li>
-      <li>Spostare informazioni tra fogli Excel e gestionali</li>
-      <li>Rispondere a lead o richieste di informazioni base</li>
-      <li>Coordinare il passaggio di documenti tra team e clienti</li>
+      <li>Rispondere manualmente a richieste di informazioni sempre uguali</li>
+      <li>Inviare promemoria per appuntamenti o scadenze</li>
+      <li>Copiare dati da un foglio Excel a un altro strumento</li>
+      <li>Generare e inviare preventivi o fatture ricorrenti</li>
+      <li>Raccogliere e organizzare feedback o recensioni dei clienti</li>
+      <li>Aggiornare lo stato degli ordini o dei progetti</li>
     </ul>
 
-    <p class="fade-in">Ognuna di queste attività ruba minuti che, a fine mese, diventano giornate intere sottratte alla strategia e alla crescita reale del business.</p>
+    <p class="fade-in">Ognuna di queste attività, presa singolarmente, sembra piccola. Ma sommate, possono occupare <strong>da 5 a 15 ore a settimana</strong> — ore sottratte alla crescita reale del business.</p>
 
     <div class="stat-row fade-in">
       <div class="stat-box">
-        <span class="num">40%</span>
-        <span>del tempo speso<br>in compiti ripetitivi<br>e manuali</span>
+        <span class="num">67%</span>
+        <span>delle PMI<br>usa ancora Excel<br>per la gestione clienti</span>
       </div>
       <div class="stat-box">
-        <span class="num">1/4</span>
-        <span>della settimana lavorativa<br>persa in task<br>automatizzabili</span>
+        <span class="num">8h</span>
+        <span>medie perse a settimana<br>in attività<br>automatizzabili</span>
       </div>
       <div class="stat-box">
-        <span class="num">78%</span>
-        <span>dei clienti acquista<br>da chi risponde per primo<br>alla richiesta</span>
+        <span class="num">3×</span>
+        <span>più veloce<br>la risposta ai clienti<br>con un CRM automatico</span>
       </div>
     </div>
 
     <h2 class="fade-in">Esempi reali per ogni tipo di attività</h2>
-    <p class="fade-in">Ecco scenari concreti dove l'integrazione di sistemi fa la differenza tra un business bloccato e uno che scala velocemente.</p>
+    <p class="fade-in">Le automazioni si adattano a qualsiasi settore. Ecco alcuni scenari concreti, per capire subito dove potrebbero fare la differenza nella tua realtà.</p>
 
     <div class="examples-grid fade-in">
       <div class="ex-card">
         <span class="ex-icon">✂️</span>
         <h4>Salone / Studio estetico</h4>
-        <p>Promemoria intelligenti via SMS 24 ore prima dell'appuntamento riducono i "No-Show" e liberano automaticamente i posti disdetti.</p>
+        <p>Il cliente prenota online e riceve un promemoria SMS 24h prima. In caso di disdetta, il calendario si aggiorna da solo.</p>
       </div>
       <div class="ex-card">
         <span class="ex-icon">⚖️</span>
         <h4>Studio professionale</h4>
-        <p>La ricezione di un documento via mail attiva la creazione automatica della cartella cliente su Cloud e assegna il task al collaboratore.</p>
+        <p>Una richiesta via email genera automaticamente una scheda cliente, assegna la pratica e invia un'email di presa in carico.</p>
       </div>
       <div class="ex-card">
         <span class="ex-icon">🍽️</span>
         <h4>Ristorante / Bar</h4>
-        <p>Moduli automatici raccolgono recensioni post-cena e inviano coupon personalizzati ai clienti fedeli che non tornano da oltre 30 giorni.</p>
+        <p>Dopo ogni prenotazione parte un messaggio di conferma. A fine serata, un modulo automatico raccoglie le recensioni dei tavoli.</p>
       </div>
       <div class="ex-card">
         <span class="ex-icon">🏗️</span>
         <h4>Artigiano / Impiantista</h4>
-        <p>L'accettazione di un preventivo digitale genera la fattura proforma e inserisce i materiali necessari nella lista acquisti settimanale.</p>
+        <p>Il preventivo firmato via email attiva automaticamente la fattura proforma e inserisce il lavoro nel calendario con materiali necessari.</p>
       </div>
       <div class="ex-card">
         <span class="ex-icon">🛒</span>
         <h4>E-commerce locale</h4>
-        <p>Recupero automatico dei carrelli abbandonati e sincronizzazione istantanea tra magazzino fisico e negozio online.</p>
+        <p>Ogni ordine scatena una catena: conferma al cliente, aggiornamento del magazzino, notifica al corriere, email di follow-up post-spedizione.</p>
       </div>
       <div class="ex-card">
         <span class="ex-icon">🎓</span>
         <h4>Formatore / Coach</h4>
-        <p>Dall'iscrizione al follow-up post-corso: una sequenza di email e materiali che educa il cliente mentre tu ti concentri sulla lezione.</p>
+        <p>Chi si iscrive a un corso riceve la sequenza di email di benvenuto, il materiale pre-corso e i reminder delle sessioni live — tutto automatico.</p>
       </div>
     </div>
 
     <h2 class="fade-in">Da dove si comincia?</h2>
-    <p class="fade-in">Il segreto non è il software, è il processo. Automatizzare un processo sbagliato non fa altro che renderlo più veloce nel creare problemi.</p>
+    <p class="fade-in">Il punto di partenza non è la tecnologia — è il processo. Prima di scegliere uno strumento, bisogna capire <strong>quali attività si ripetono di più</strong> e dove si verificano i colli di bottiglia.</p>
 
-    <h3 class="fade-in">1. Mappa i tuoi colli di bottiglia</h3>
-    <p class="fade-in">Identifica l'attività che "odi" fare ogni lunedì mattina. Quella è quasi certamente la candidata perfetta per l'automazione.</p>
+    <h3 class="fade-in">1. Mappa le tue attività ripetitive</h3>
+    <p class="fade-in">Per una settimana, annota ogni volta che fai qualcosa che hai già fatto esattamente nello stesso modo. Quella lista è la tua mappa delle opportunità.</p>
 
-    <h3 class="fade-in">2. Integra invece di isolare</h3>
-    <p class="fade-in">Un'automazione solida richiede che i tuoi strumenti (Mail, Calendario, CRM, Gestionale) parlino la stessa lingua attraverso le API. Senza questa visione d'insieme, creerai solo frammentazione.</p>
+    <h3 class="fade-in">2. Scegli un punto d'ingresso semplice</h3>
+    <p class="fade-in">Non serve automatizzare tutto in una volta. Un buon primo passo: <strong>la gestione delle richieste in arrivo</strong>. Un modulo sul sito collegato a un foglio Google o a un CRM base è già un'automazione concreta, realizzabile in mezza giornata.</p>
 
-    <h3 class="fade-in">3. Misura il ROI</h3>
-    <p class="fade-in">Calcola il valore del tuo tempo: se automatizzare un task ti costa 500€ ma ti libera 10 ore al mese, l'investimento si ripaga in meno di 60 giorni.</p>
+    <h3 class="fade-in">3. Misura il tempo risparmiato</h3>
+    <p class="fade-in">Dopo aver attivato un'automazione, conta le ore recuperate nei successivi 30 giorni. Quel numero ti dirà dove investire il prossimo passo.</p>
 
     <div class="callout fade-in">
-      <p>"Non ho tempo di impostare le automazioni" è il paradosso del taglialegna troppo occupato a segare per affilare la lama. Ferma il lavoro manuale per ripartire più veloce.</p>
+      <p>"Non ho tempo di impostare le automazioni" è il paradosso più comune. È esattamente perché non hai tempo che dovresti farlo — perché dopo le avrai.</p>
     </div>
 
-    <h2 class="fade-in">Quanto costa, davvero?</h2>
-    <p class="fade-in">Il costo degli strumenti (Zapier, Make, CRM) è spesso irrisorio rispetto al valore del tempo recuperato. Il vero costo è nella **progettazione**: costruire flussi che non si rompano al primo aggiornamento e che sappiano gestire le eccezioni.</p>
-    <p class="fade-in">Affidarsi al "fai-da-te" senza esperienza tecnica può portare a perdite di dati o errori di comunicazione con i clienti che costano molto più di una consulenza professionale. <strong>Farlo bene la prima volta è l'unico modo per risparmiare davvero.</strong></p>
+    <h2 class="fade-in">Quanto costa?</h2>
+    <p class="fade-in">Questo è il punto che spesso blocca le piccole attività: la percezione che le automazioni siano costose. In realtà il mercato oggi offre strumenti con piani gratuiti o a pochi euro al mese — <strong>Zapier, Make, n8n, Notion, Tally, Brevo</strong> sono solo alcuni esempi accessibili anche con budget ridotti.</p>
+    <p class="fade-in">Il costo reale non è lo strumento: è il tempo per configurarlo correttamente. È qui che lavorare con chi ha già esperienza fa la differenza — si evitano settimane di tentativi e si arriva subito al risultato.</p>
 
-    <div class="warning-box fade-in">
-      <p>Oltre il 70% dei progetti di trasformazione digitale fallisce a causa di una cattiva analisi iniziale. L'automazione deve servire il business, non complicarlo inutilmente.</p>
-    </div>
-
-    <h2 class="fade-in">Il tuo vantaggio competitivo</h2>
-    <p class="fade-in">Mentre i tuoi concorrenti rispondono alle email dopo 24 ore e perdono dati tra mille fogli Excel, tu puoi operare con la precisione e la velocità di una multinazionale, mantenendo la flessibilità di una piccola impresa.</p>
-    <p class="fade-in">L'obiettivo non è diventare un'azienda tecnologica, ma liberare l'uomo dalla fatica inutile per lasciarlo fare ciò che le macchine non potranno mai fare: creare relazioni e valore.</p>
+    <h2 class="fade-in">Il vantaggio competitivo che in pochi sfruttano</h2>
+    <p class="fade-in">La maggior parte delle piccole imprese in Italia non usa ancora automazioni strutturate. Questo significa che chi inizia oggi ha un <strong>vantaggio reale</strong>: risponde più velocemente, sbaglia meno, scala più facilmente.</p>
+    <p class="fade-in">L'obiettivo non è diventare un'azienda tecnologica. È liberare il tuo tempo dalle cose che il computer può fare meglio di te — per concentrarti sulle cose che solo tu sai fare.</p>
 
   </div>
 
   <div class="article-cta fade-in">
     <h3>Vuoi capire cosa si può automatizzare nella tua attività?</h3>
-    <p>Raccontaci come lavori. Analizziamo i tuoi processi e ti diciamo esattamente dove le automazioni ti farebbero guadagnare tempo — e come implementarle nel modo giusto.</p>
-    <a href="index.html#contact" class="btn">Richiedi un'analisi gratuita →</a>
+    <p>Raccontaci come lavori. Facciamo un'analisi gratuita e ti diciamo esattamente dove le automazioni ti farebbero guadagnare tempo.</p>
+    <a href="/#contact" class="btn">Richiedi un'analisi gratuita →</a>
   </div>
 
 </main>
 
 <footer>
-  © 2026 Digitio · Tutti i diritti riservati
+  © 2025 Digitio · Tutti i diritti riservati
 </footer>
 
 <script>
