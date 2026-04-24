@@ -105,15 +105,6 @@ docker compose up -d --build
 
 Il sito sarà disponibile su [http://localhost](http://localhost).
 
-### Come funziona
-
-Il `Dockerfile` usa un **multi-stage build**:
-
-1. **Stage 1 — build**: usa Node 20 per installare le dipendenze e generare la cartella `dist/` con `npm run build`
-2. **Stage 2 — serve**: usa nginx per servire i file statici della cartella `dist/`
-
-L'image finale non contiene Node né il codice sorgente — solo i file statici ottimizzati serviti da nginx.
-
 ### Comandi utili
 
 ```bash
@@ -132,37 +123,6 @@ docker compose down --rmi all
 
 ---
 
-## Supabase — configurazione DB
-
-Il form contatti invia i dati alla tabella `Contacts` su Supabase.
-
-Per replicare la configurazione:
-
-1. Crea un progetto su [Supabase](https://supabase.com/)
-2. Crea una tabella `Contacts` con le colonne:
-
-| Colonna | Tipo |
-|---|---|
-| id | int8 (primary key) |
-| nome | text |
-| email | text |
-| messaggio | text |
-| created_at | timestamptz |
-
-3. Vai su **SQL Editor** ed esegui:
-
-```sql
-GRANT USAGE ON SCHEMA public TO anon;
-GRANT INSERT ON TABLE "Contacts" TO anon;
-```
-
-4. Aggiungi una RLS policy per permettere gli insert anonimi:
-   - **Table Editor → Contacts → Add RLS Policy**
-   - Command: `INSERT`
-   - Target roles: `anon`
-   - WITH CHECK: `true`
-
----
 
 ## Licenza
 
