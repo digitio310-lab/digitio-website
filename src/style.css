@@ -86,7 +86,7 @@ nav ul a:hover::after {
   padding: 6rem 2rem;
   background-image:
     linear-gradient(to bottom, rgba(10,10,10,0.3) 0%, rgba(10,10,10,1) 85%),
-    url('/src/assets/logo_digitio_nero.jpeg');
+    url('/assets/logo_digitio_nero.jpeg');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
